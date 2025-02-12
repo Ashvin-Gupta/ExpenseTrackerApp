@@ -8,23 +8,42 @@ function HomePage() {
     'September', 'October', 'November', 'December'
   ];
 
+  const getCurrentMonth = () => {
+    return new Date().toLocaleString('default', { month: 'long' });
+  };
+
   return (
-    <div className="home-page">
-      <header className="App-header">
-        <h1>Expense Tracker</h1>
-        <p>Select a month to view or add expenses</p>
-        <div className="month-grid">
+    <div className="App-header">
+      <div className="dashboard-header">
+        <div className="dashboard-title">
+          Expense Tracker Dashboard
+        </div>
+      </div>
+
+      <div className="overview-card">
+        <h2>Current Month: {getCurrentMonth()}</h2>
+        <button 
+          onClick={() => navigate(`/month/${getCurrentMonth().toLowerCase()}`)}
+          className="current-month-button"
+        >
+          View Current Month
+        </button>
+      </div>
+
+      <div className="months-grid-container">
+        <h2>Select Month</h2>
+        <div className="months-grid">
           {months.map((month) => (
             <button
               key={month}
               onClick={() => navigate(`/month/${month.toLowerCase()}`)}
-              className="month-button"
+              className="month-card"
             >
-              {month}
+              <span className="month-name">{month}</span>
             </button>
           ))}
         </div>
-      </header>
+      </div>
     </div>
   );
 }

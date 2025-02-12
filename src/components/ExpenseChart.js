@@ -18,15 +18,15 @@ ChartJS.register(
   Legend
 );
 
-function ExpenseChart({ data, title }) {
+function ExpenseChart({ data, title, textColor = '#000000' }) {
   const chartData = {
     labels: Object.keys(data),
     datasets: [
       {
         label: 'Expenses',
         data: Object.values(data),
-        backgroundColor: 'rgba(97, 218, 251, 0.5)',
-        borderColor: 'rgba(97, 218, 251, 1)',
+        backgroundColor: 'rgba(59, 130, 246, 0.5)',
+        borderColor: 'rgba(59, 130, 246, 1)',
         borderWidth: 1,
       },
     ],
@@ -34,39 +34,66 @@ function ExpenseChart({ data, title }) {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: 'top',
+        display: true,
+        labels: {
+          color: textColor,
+          font: {
+            size: 12
+          }
+        }
       },
       title: {
         display: true,
         text: title,
-        color: 'white',
+        color: textColor,
+        font: {
+          size: 16,
+          weight: 'bold'
+        },
+        padding: {
+          top: 10,
+          bottom: 20
+        }
       },
+      tooltip: {
+        callbacks: {
+          label: function(context) {
+            return `£${context.formattedValue}`;
+          }
+        }
+      }
     },
     scales: {
       y: {
+        beginAtZero: true,
         ticks: {
-          color: 'white',
+          color: textColor,
           callback: (value) => `£${value}`
         },
         grid: {
-          color: 'rgba(255, 255, 255, 0.1)'
+          color: 'rgba(0, 0, 0, 0.1)'
         }
       },
       x: {
         ticks: {
-          color: 'white'
+          color: textColor,
+          font: {
+            size: 11
+          }
         },
         grid: {
-          color: 'rgba(255, 255, 255, 0.1)'
+          display: false
         }
       }
     }
   };
 
   return (
-    <div className="chart-container">
+    <div style={{ width: '100%', height: '400px' }}>
       <Bar data={chartData} options={options} />
     </div>
   );

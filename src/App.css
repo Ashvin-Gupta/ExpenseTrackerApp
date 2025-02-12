@@ -1,5 +1,23 @@
+:root {
+  --primary-bg: #f8f7fd;
+  --card-bg: #ffffff;
+  --primary-text: #2d2d2d;
+  --secondary-text: #666666;
+  --accent-color: #3b82f6;
+  --border-radius: 16px;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+body {
+  background-color: var(--primary-bg);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
 .App {
   text-align: center;
+  min-height: 100vh;
+  color: var(--primary-text);
 }
 
 .App-logo {
@@ -14,14 +32,13 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  padding: 2rem;
+  background-color: var(--primary-bg);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--primary-text);
 }
 
 .App-link {
@@ -35,6 +52,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.dashboard-header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .month-grid {
@@ -61,14 +92,19 @@
 }
 
 .back-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
+  background-color: var(--card-bg);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  background-color: #61dafb;
-  border: none;
-  border-radius: 5px;
-  color: #282c34;
+  transition: all 0.2s;
+  color: var(--primary-text);
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.back-button:hover {
+  background-color: var(--primary-bg);
 }
 
 h1 {
@@ -77,24 +113,26 @@ h1 {
 
 .week-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 15px;
-  margin: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 2rem 0;
 }
 
 .week-button {
-  padding: 12px 20px;
-  font-size: 16px;
+  background-color: var(--card-bg);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  background-color: #61dafb;
-  border: none;
-  border-radius: 5px;
-  color: #282c34;
-  transition: background-color 0.3s;
+  transition: all 0.2s;
+  box-shadow: var(--shadow);
 }
 
 .week-button:hover {
-  background-color: #4fa8d1;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
 .week-page {
@@ -143,52 +181,83 @@ h1 {
 }
 
 .monthly-summary {
-  background-color: #1a1e23;
-  padding: 20px;
-  border-radius: 10px;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
   margin: 20px 0;
-  width: 80%;
-  max-width: 600px;
+  width: 90%;
+  max-width: 1200px;
+  box-shadow: var(--shadow);
+}
+
+.monthly-sections-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.monthly-section {
+  background-color: var(--primary-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.monthly-section h2 {
+  color: var(--primary-text);
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
 }
 
 .monthly-input-group {
-  margin: 15px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 1rem 0;
 }
 
 .monthly-input-group label {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  gap: 5px;
+  gap: 1rem;
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--secondary-text);
 }
 
 .monthly-input {
-  padding: 8px;
-  border: 1px solid #61dafb;
-  border-radius: 4px;
-  background-color: #282c34;
-  color: white;
-  width: 150px;
-  text-align: center;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: var(--card-bg);
+  color: var(--primary-text);
+  width: 120px;
+  text-align: right;
+  font-size: 0.9rem;
 }
 
 .monthly-totals {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #61dafb;
+  background-color: var(--primary-bg);
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .monthly-totals p {
-  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
 }
 
 .remaining-budget {
-  font-size: 1.2em;
-  font-weight: bold;
-  color: #61dafb;
+  font-weight: 600;
+  color: var(--accent-color);
+  font-size: 1.1rem !important;
+  margin-top: 1rem !important;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .week-total-row {
@@ -197,16 +266,232 @@ h1 {
 }
 
 .chart-section {
-  width: 80%;
-  max-width: 800px;
-  margin: 20px auto;
-  background-color: #1a1e23;
-  padding: 20px;
-  border-radius: 10px;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 1200px;
+  margin: 1rem 0;
+  box-shadow: var(--shadow);
 }
 
 .chart-container {
+  width: 100%;
+  height: 400px;
   position: relative;
-  margin: auto;
-  height: 300px;
+}
+
+.week-dates {
+  font-size: 0.8rem;
+  color: var(--secondary-text);
+  margin-top: 0.5rem;
+}
+
+.week-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70px;
+}
+
+.expense-table-container {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 1200px;
+  margin: 1rem 0;
+  box-shadow: var(--shadow);
+}
+
+.expense-table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--border-radius);
+}
+
+.expense-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--card-bg);
+  color: var(--primary-text);
+}
+
+.expense-table th,
+.expense-table td {
+  padding: 0.75rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.expense-table th {
+  background-color: var(--primary-bg);
+  font-weight: 600;
+  color: var(--primary-text);
+  white-space: nowrap;
+}
+
+.expense-table input.expense-input {
+  width: 80px;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: right;
+  font-size: 0.9rem;
+  color: var(--primary-text);
+  background-color: var(--primary-bg);
+}
+
+.expense-table input.expense-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+.category-column {
+  position: sticky;
+  left: 0;
+  background-color: var(--card-bg);
+  font-weight: 500;
+  text-align: left !important;
+  z-index: 1;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.total-column {
+  font-weight: 500;
+  background-color: var(--primary-bg);
+}
+
+.week-total-row {
+  font-weight: 600;
+  background-color: var(--primary-bg);
+}
+
+.week-total-row td {
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.week-total-spacer {
+  background-color: var(--primary-bg);
+}
+
+@media (max-width: 768px) {
+  .expense-table-container {
+    padding: 1rem;
+  }
+
+  .expense-table th,
+  .expense-table td {
+    padding: 0.5rem;
+  }
+
+  .expense-table input.expense-input {
+    width: 60px;
+    padding: 0.4rem;
+  }
+
+  .chart-container {
+    height: 300px;
+  }
+}
+
+.overview-card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 1200px;
+  margin: 1rem 0;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.overview-card h2 {
+  color: var(--primary-text);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.current-month-button {
+  background-color: var(--accent-color);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.current-month-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-2px);
+}
+
+.months-grid-container {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 1200px;
+  margin: 1rem 0;
+  box-shadow: var(--shadow);
+}
+
+.months-grid-container h2 {
+  color: var(--primary-text);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.months-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+.month-card {
+  background-color: var(--primary-bg);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80px;
+}
+
+.month-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.month-card:hover .month-name {
+  color: white;
+}
+
+.month-name {
+  color: var(--primary-text);
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+@media (max-width: 768px) {
+  .months-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .overview-card,
+  .months-grid-container {
+    padding: 1.5rem;
+  }
 }

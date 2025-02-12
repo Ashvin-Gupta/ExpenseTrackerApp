@@ -69,57 +69,64 @@ function WeekPage() {
   };
 
   return (
-    <div className="week-page">
-      <h1>{monthName.charAt(0).toUpperCase() + monthName.slice(1)} - Week {weekNumber}</h1>
-      
+    <div className="App-header">
+      <div className="dashboard-header">
+        <div className="dashboard-title">
+          {monthName.charAt(0).toUpperCase() + monthName.slice(1)} - Week {weekNumber}
+        </div>
+        <button onClick={() => navigate(`/month/${monthName}`)} className="back-button">
+          Back to Month View
+        </button>
+      </div>
+
       <div className="chart-section">
         <ExpenseChart 
           data={getChartData()} 
-          title={`Expenses for ${monthName} - Week ${weekNumber}`}
+          title={`Expenses for Week ${weekNumber}`}
         />
       </div>
 
-      <div className="table-container">
-        <table className="expense-table">
-          <thead>
-            <tr>
-              <th>Category</th>
-              {days.map(day => (
-                <th key={day}>{day}</th>
-              ))}
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-            {categories.map(category => (
-              <tr key={category}>
-                <td>{category}</td>
+      <div className="expense-table-container">
+        <div className="expense-table-wrapper">
+          <table className="expense-table">
+            <thead>
+              <tr>
+                <th className="category-column">Category</th>
                 {days.map(day => (
-                  <td key={day}>
-                    <input
-                      type="number"
-                      value={expenses[category][day]}
-                      onChange={(e) => handleExpenseChange(category, day, e.target.value)}
-                      className="expense-input"
-                    />
-                  </td>
+                  <th key={day}>{day}</th>
                 ))}
-                <td className="total-cell">
-                  £{calculateRowTotal(category).toFixed(2)}
-                </td>
+                <th className="total-column">Total</th>
               </tr>
-            ))}
-            <tr className="week-total-row">
-              <td colSpan={days.length + 1}>Week Total</td>
-              <td className="total-cell">£{calculateWeekTotal().toFixed(2)}</td>
-            </tr>
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {categories.map(category => (
+                <tr key={category}>
+                  <td className="category-column">{category}</td>
+                  {days.map(day => (
+                    <td key={day}>
+                      <input
+                        type="number"
+                        value={expenses[category][day]}
+                        onChange={(e) => handleExpenseChange(category, day, e.target.value)}
+                        className="expense-input"
+                        placeholder="0.00"
+                      />
+                    </td>
+                  ))}
+                  <td className="total-column">
+                    £{calculateRowTotal(category).toFixed(2)}
+                  </td>
+                </tr>
+              ))}
+              <tr className="week-total-row">
+                <td className="category-column">Week Total</td>
+                <td colSpan={days.length} className="week-total-spacer"></td>
+                <td className="total-column">£{calculateWeekTotal().toFixed(2)}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      
-      <button onClick={() => navigate(`/month/${monthName}`)} className="back-button">
-        Back to Month View
-      </button>
     </div>
   );
 }
