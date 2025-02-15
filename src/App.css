@@ -1,9 +1,15 @@
 :root {
-  --primary-bg: #f8f7fd;
-  --card-bg: #ffffff;
-  --primary-text: #2d2d2d;
-  --secondary-text: #666666;
-  --accent-color: #3b82f6;
+  /* Color palette */
+  --navy: #1B365D;
+  --beige: #F5E6D3;
+  --white: #FFFFFF;
+
+  /* Theme variables */
+  --primary-bg: var(--white);
+  --card-bg: var(--beige);
+  --primary-text: var(--navy);
+  --secondary-text: var(--navy);
+  --accent-color: var(--navy);
   --border-radius: 16px;
   --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
 }
@@ -11,7 +17,7 @@
 body {
   background-color: var(--primary-bg);
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .App {
@@ -426,7 +432,7 @@ h1 {
 }
 
 .current-month-button:hover {
-  background-color: #2563eb;
+  background-color: #FE6D73;
   transform: translateY(-2px);
 }
 

@@ -25,8 +25,8 @@ function ExpenseChart({ data, title, textColor = '#000000' }) {
       {
         label: 'Expenses',
         data: Object.values(data),
-        backgroundColor: 'rgba(59, 130, 246, 0.5)',
-        borderColor: 'rgba(59, 130, 246, 1)',
+        backgroundColor: '#1B365D',
+        borderColor: '#1B365D',
         borderWidth: 1,
       },
     ],
